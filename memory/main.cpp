@@ -15,7 +15,7 @@ using namespace std;
 
 int main() {
     int n,w,p,d,i;
-    vector<int> v1,v2;
+    vector<int> v1,v2,p1,p2;
     srand( time( NULL ) );
     cout << "Witaj w grze memory!!!\n";
     cout << "Jak dużo chcesz mieć pól? ";
@@ -26,6 +26,7 @@ int main() {
         p = ( rand() % w ) + 1;
         if(czy_juz_byla(v1, p)){
             v1.push_back(p);
+            p1.push_back(1);
             i--;
             continue;
         }
@@ -36,51 +37,52 @@ int main() {
         p = ( rand() % w ) + 1;
         if(czy_juz_byla(v2, p)){
             v2.push_back(p);
+            p2.push_back(1);
             i--;
             continue;
         }
     }
-    for(i = 0;i < w;i++)
-        cout << v1[i] << " ";
-    cout << endl;
-    for(i = 0;i < w;i++)
-        cout << v2[i] << " ";
     n = w;
+    cout << endl << "Podaj dwa pola ktore chcesz odsłonić: (w przedziale od 0 do " << w << ") " << endl;
+    
     while(n != 0)
     {
-        cout << endl << "Podaj dwa pola ktore chcesz odsłonić: (w przedziale od 0 do " << w << ") " << endl;
-        
         cout << "v1 -> ";
-        for(i = 0;i < w;i++){
-            cout << i + 1 << ". ";
-            if(v1[i] == 0)
-                cout << v1[i] << " ";
-            else
-                cout << "  ";
-        }
+        wypisz(v1, p1);
         cout << endl << "v2 -> ";
-        for(i = 0;i < w;i++){
-            cout << i + 1 << ". ";
-            if(v2[i] == 0)
-                cout << v2[i] << " ";
-            else
-                cout << "  ";
-        }
+        wypisz(v2, p2);
         cout << endl;
+
         cin >> p;
         cin >> d;
         p--;
         d--;
         if(v1[p] == v2[d])
         {
-            v1[p] = 0;
-            v2[d] = 0;
+            p1[p] = 0;
+            p2[d] = 0;
             n--;
+            system("clear");
         }
-        else
+        else{
+            p1[p] = 0;
+            p2[d] = 0;
+            cout << "v1 -> ";
+            wypisz(v1, p1);
+            cout << endl << "v2 -> ";
+            wypisz(v2, p2);
+            cout << endl;
+            p1[p] = 1;
+            p2[d] = 1;
             cout << "Niestety nie trafiles\n";
-        system("clear");
+            
+        }
     }
+    cout << "v1 -> ";
+    wypisz(v1, p1);
+    cout << endl << "v2 -> ";
+    wypisz(v2, p2);
+    cout << endl;
     cout << "Brawo znalazles wszystkie pary!!!!!\n";
     
     return 0;
