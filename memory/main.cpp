@@ -30,7 +30,7 @@ int main() {
             i--;
             continue;
         }
-        cout << "Liczba sie powturzyła " << p << endl;
+        cout << "Liczba sie powtorzyła " << p << endl;
     }
     i = w;
     while(i != 0)
@@ -42,7 +42,7 @@ int main() {
             i--;
             continue;
         }
-        cout << "Liczba sie powturzyła " << p << endl;
+        cout << "Liczba sie powtorzyła " << p << endl;
     }
     for(i = 0;i < w;i++)
         cout << v1[i] << " ";
