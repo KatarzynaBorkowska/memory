@@ -17,3 +17,14 @@ bool czy_juz_byla(vector<int> v, int n)
             return false;
     return true;
 }
+void wypisz(vector<int> v,vector<int> p)
+{
+    int i;
+    for(i = 0;i < v.size();i++){
+        cout << i + 1 << ".";
+        if(p[i] == 0)
+            cout << v[i] << "\t";
+        else
+            cout << "\t";
+    }
+}
