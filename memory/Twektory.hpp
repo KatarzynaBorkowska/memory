@@ -13,5 +13,6 @@
 #include <vector>
 
 bool czy_juz_byla(std::vector<int>, int);
+void wypisz(std::vector<int>,std::vector<int>);
 
 #endif /* Twektory_hpp */
