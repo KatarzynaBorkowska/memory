@@ -14,5 +14,6 @@
 
 bool czy_juz_byla(std::vector<int>, int);
 void wypisz(std::vector<int>,std::vector<int>);
+bool czy_w_przedziale(int,int);
 
 #endif /* Twektory_hpp */

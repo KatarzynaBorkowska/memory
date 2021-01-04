@@ -10,80 +10,58 @@
 #include <ctime>
 #include <cstdlib>
 #include "Twektory.hpp"
+#include "dwa_na_w.hpp"
 
 using namespace std;
 
 int main() {
-    int n,w,p,d,i;
-    vector<int> v1,v2,p1,p2;
-    srand( time( NULL ) );
+    int w,rodzaj;
     cout << "Witaj w grze memory!!!\n";
     cout << "Jak dużo chcesz mieć pól? ";
     cin >> w;
-    i = w;
-    while(i != 0)
-    {
-        p = ( rand() % w ) + 1;
-        if(czy_juz_byla(v1, p)){
-            v1.push_back(p);
-            p1.push_back(1);
-            i--;
-            continue;
-        }
-    }
-    i = w;
-    while(i != 0)
-    {
-        p = ( rand() % w ) + 1;
-        if(czy_juz_byla(v2, p)){
-            v2.push_back(p);
-            p2.push_back(1);
-            i--;
-            continue;
-        }
-    }
-    n = w;
-    cout << endl << "Podaj dwa pola ktore chcesz odsłonić: (w przedziale od 0 do " << w << ") " << endl;
-    
-    while(n != 0)
-    {
-        cout << "v1 -> ";
-        wypisz(v1, p1);
-        cout << endl << "v2 -> ";
-        wypisz(v2, p2);
-        cout << endl;
-
-        cin >> p;
-        cin >> d;
-        p--;
-        d--;
-        if(v1[p] == v2[d])
+    cout << "Jezeli wolisz " << w << "x" << w << " kliknij 1\n";
+    cout << "A jezeli wolisz 2x" << w << " kliknij 2\n";
+    cin >> rodzaj;
+    if(rodzaj == 2)
+        dwa_na_w(w);
+    else{
+        if(w % 2 != 0)
         {
-            p1[p] = 0;
-            p2[d] = 0;
-            n--;
-            system("clear");
+            cout << "OK ale 'w' musi być liczba parzysta: ";
+            cin >> w;
         }
-        else{
-            p1[p] = 0;
-            p2[d] = 0;
-            cout << "v1 -> ";
-            wypisz(v1, p1);
-            cout << endl << "v2 -> ";
-            wypisz(v2, p2);
+        srand( time( NULL ) );
+        
+        
+        int tab[w][w],liczb = (w * w)/2,p,q,pom = 0;
+        
+        for(int i = 0;i < w;i++)
+            for(int j = 0;j < w;j++)
+                tab[i][j] = 0;
+        
+    
+        while(liczb != 0)
+        {
+            p = rand() % w;
+            q = rand() % w;
+            if(tab[p][q] == 0)
+            {
+                tab[p][q] = liczb;
+                pom++;
+                if(pom == 2)
+                {
+                    liczb--;
+                    pom = 0;
+                }
+            }
+        }
+        for(int i = 0;i < w;i++)
+        {
+            for(int j = 0;j < w;j++){
+                cout << tab[i][j] << "\t";
+            }
             cout << endl;
-            p1[p] = 1;
-            p2[d] = 1;
-            cout << "Niestety nie trafiles\n";
-            
         }
     }
-    cout << "v1 -> ";
-    wypisz(v1, p1);
-    cout << endl << "v2 -> ";
-    wypisz(v2, p2);
-    cout << endl;
-    cout << "Brawo znalazles wszystkie pary!!!!!\n";
-    
     return 0;
 }

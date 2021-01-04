@@ -17,6 +17,10 @@ bool czy_juz_byla(vector<int> v, int n)
             return false;
     return true;
 }
+bool czy_w_przedziale(int n,int w)
+{
+    return (n > 0) && (n <= w);
+}
 void wypisz(vector<int> v,vector<int> p)
 {
     int i;
