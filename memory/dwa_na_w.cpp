@@ -41,7 +41,7 @@ void dwa_na_w(int w){
         }
     }
     n = w;
-    cout << endl << "Podaj dwa pola ktore chcesz odsłonić: (w przedziale od 0 do " << w << ") " << endl;
+    cout << endl << "Podaj dwa pola ktore chcesz odsłonić: (w przedziale od 1 do " << w << ") " << endl;
     
     while(n != 0)
     {
